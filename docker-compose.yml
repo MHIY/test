@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  nginx1:
+    build: .
+    container_name: nginx1
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./keepalived.conf:/etc/keepalived/keepalived.conf
+      - ./check_nginx.sh:/etc/keepalived/check_nginx.sh
+      - ./index.html:/usr/share/nginx/html/index.html
